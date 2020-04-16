@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SF C3.9</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	
+	<textarea style="width:200px; height: 60px;" id="city" placeholder="Напишите Ваш город"></textarea>
+	<br>
+	<button id="city_clear">Очистить</button>
+	<script>
+	    city.value = localStorage.getItem('city');
+	    city.oninput = () => {
+	      localStorage.setItem('city', city.value)
+	    };
+	    city_clear.onclick = () => {
+	    	localStorage.removeItem('city');
+	    	city.value=''
+	    }
+	</script>
+	
+	<br><br><br>
+
+	<form action="" class="form-group">
+		<div class="form-check">
+
+			<input class="form-check-input" type="checkbox" value="" id="Check1">
+			<label class="form-check-label" for="Check1"> не звонить мне </label>
+			<br>
+			<input class="form-check-input" type="checkbox" value="" id="Check2">
+			<label class="form-check-label" for="Check2"> я прочитал и согласен с правилами пользования сервисом </label>
+			<br>
+			<input class="form-check-input" type="checkbox" value="" id="Check3">
+			<label class="form-check-label" for="Check3"> я не выбираю эту галочку </label>
+			<br>
+			<input class="form-check-input" type="checkbox" value="" id="Check4">
+			<label class="form-check-label" for="Check4"> я подтверждаю, что свобода в интернете — это возможность выбирать галочки </label>
+			<br>
+			<input class="form-check-input" type="checkbox" value="" id="Check5">
+			<label class="form-check-label" for="Check5"> мне больше 12 лет </label>
+			<br>
+			<input class="form-check-input" type="checkbox" value="" id="Check6">
+			<label class="form-check-label" for="Check6"> это задание выполнено правильно </label>
+
+		</div>
+
+		<button id="save_check">Сохранить</button>
+	</form>
+
+	<script>
+
+		function Boolean_(val) {
+			if (val == "true") { return true } else { return false }
+		}	
+
+		save_check.onclick = () => {
+	    	localStorage.setItem('Check1', Check1.checked)
+	    	localStorage.setItem('Check2', Check2.checked)
+	    	localStorage.setItem('Check3', Check3.checked)
+	    	localStorage.setItem('Check4', Check4.checked)
+	    	localStorage.setItem('Check5', Check5.checked)
+	    	localStorage.setItem('Check6', Check6.checked)
+	    }
+
+		if (localStorage.getItem('Check1') != null) {		
+			Check1.disabled = true
+			save_check.disabled = true
+		}
+	    
+	    Check1.checked = Boolean_(localStorage.getItem('Check1'));
+	    Check2.checked = Boolean_(localStorage.getItem('Check2'));
+	    Check3.checked = Boolean_(localStorage.getItem('Check3'));
+	    Check4.checked = Boolean_(localStorage.getItem('Check4'));
+	    Check5.checked = Boolean_(localStorage.getItem('Check5'));
+	    Check6.checked = Boolean_(localStorage.getItem('Check6'));
+	    
+	</script>
+
+</body>
+</html>
